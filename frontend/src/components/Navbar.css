@@ -1,0 +1,17 @@
+.navbar {
+  background-color: #007bff; /* Customize the navbar background */
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  color: #ffffff !important; /* Ensure contrast with background */
+}
+
+.nav-link {
+  color: #ffffff !important;
+  margin-right: 1rem;
+}
+
+.nav-link:hover {
+  color: #f8f9fa !important; /* Lighten color on hover */
+}

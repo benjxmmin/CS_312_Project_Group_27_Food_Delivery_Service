@@ -1,0 +1,30 @@
+/* Custom Styles for Navbar */
+.navbar {
+  background-color: #007bff; /* Your primary brand color */
+  padding: 1rem;
+}
+
+.navbar-brand,
+.nav-link {
+  color: #fff !important;
+}
+
+.nav-link:hover {
+  color: #d1ecf1 !important;
+}
+
+/* Typography for Home Page */
+h1 {
+  font-weight: bold;
+  color: #333;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+/* Button Customization */
+.btn {
+  font-size: 1em;
+  padding: 10px 20px;
+}
