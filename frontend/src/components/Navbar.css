@@ -1,10 +1,10 @@
 .navbar {
-  background-color: #007bff; /* Customize the navbar background */
+  background-color: #007bff;
 }
 
 .navbar-brand {
   font-size: 1.5em;
-  color: #ffffff !important; /* Ensure contrast with background */
+  color: #ffffff !important;
 }
 
 .nav-link {
@@ -13,5 +13,5 @@
 }
 
 .nav-link:hover {
-  color: #f8f9fa !important; /* Lighten color on hover */
+  color: #f8f9fa !important;
 }

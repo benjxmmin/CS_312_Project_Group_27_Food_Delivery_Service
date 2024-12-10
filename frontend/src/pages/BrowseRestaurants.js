@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import SearchBar from '../components/SearchBar';
-import ReviewForm from '../pages/ReviewForm';
-import ReviewList from '../pages/ReviewList';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom';
 
 const BrowseRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedRestaurantId, setSelectedRestaurantId] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // Mock restaurant data
     const mockRestaurants = [
       {
         restaurant_id: 1,
@@ -34,33 +32,38 @@ const BrowseRestaurants = () => {
       },
     ];
 
+    // Set mock data to state
     setRestaurants(mockRestaurants);
   }, []);
 
+  // Filter restaurants based on search term
   const filteredRestaurants = restaurants.filter((restaurant) =>
     restaurant.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div>
-      <h2>Browse Restaurants</h2>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <ul>
+    <div className="container">
+      <h2 className="text-center my-4">Browse Restaurants</h2>
+      <input
+        type="text"
+        placeholder="Search for a restaurant..."
+        className="form-control mb-4"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <ul className="list-group">
         {filteredRestaurants.map((restaurant) => (
-          <li key={restaurant.restaurant_id}>
-            <h3>{restaurant.name}</h3>
+          <li key={restaurant.restaurant_id} className="list-group-item">
+            <h4>{restaurant.name}</h4>
             <p>Cuisine: {restaurant.cuisine}</p>
             <p>Address: {restaurant.address}</p>
             <p>Rating: {restaurant.rating}</p>
-            <button onClick={() => setSelectedRestaurantId(restaurant.restaurant_id)}>
+            <button
+              className="btn btn-primary mt-2"
+              onClick={() => navigate(`/reviews/${restaurant.restaurant_id}`)}
+            >
               View Reviews & Leave a Review
             </button>
-            {selectedRestaurantId === restaurant.restaurant_id && (
-              <div>
-                <ReviewForm restaurantId={restaurant.restaurant_id} />
-                <ReviewList restaurantId={restaurant.restaurant_id} />
-              </div>
-            )}
           </li>
         ))}
       </ul>
